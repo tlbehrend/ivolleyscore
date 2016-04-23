@@ -7,21 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		806B7FC8C808EEFFE46F7C4C /* Pods_ivolleyscore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */; };
+		C10D06291C67950100FF460F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D06281C67950100FF460F /* DataService.swift */; };
+		C1827B741C6D958B00DF10B2 /* ScoringToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1827B731C6D958B00DF10B2 /* ScoringToolViewController.swift */; };
+		C18B82511C8BB374005BD307 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B82501C8BB374005BD307 /* MaterialView.swift */; };
+		C192DC321C83453B00447EEC /* todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192DC311C83453B00447EEC /* todo.swift */; };
 		C1A414B11C67826100A962BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A414B01C67826100A962BA /* AppDelegate.swift */; };
-		C1A414B31C67826100A962BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A414B21C67826100A962BA /* ViewController.swift */; };
+		C1A414B31C67826100A962BA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A414B21C67826100A962BA /* LoginViewController.swift */; };
 		C1A414B61C67826100A962BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1A414B41C67826100A962BA /* Main.storyboard */; };
 		C1A414B81C67826100A962BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1A414B71C67826100A962BA /* Assets.xcassets */; };
 		C1A414BB1C67826100A962BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1A414B91C67826100A962BA /* LaunchScreen.storyboard */; };
+		C1ACB7861CBDCAD5000534A2 /* MaterialButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */; };
+		C1E4A7741C67A4D30003BFC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7731C67A4D30003BFC0 /* Constants.swift */; };
+		C1E4A7771C68427B0003BFC0 /* StartNewMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */; };
+		C1E4A7791C68F9660003BFC0 /* MatchSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */; };
+		C1E4A77C1C68FDC40003BFC0 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A77B1C68FDC40003BFC0 /* Match.swift */; };
+		C1E4A77F1C6908370003BFC0 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A77E1C6908370003BFC0 /* MatchCell.swift */; };
+		C1E4A7811C69688C0003BFC0 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7801C69688C0003BFC0 /* ScoreboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.debug.xcconfig"; sourceTree = "<group>"; };
+		59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ivolleyscore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.release.xcconfig"; sourceTree = "<group>"; };
+		C10D06281C67950100FF460F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		C1827B731C6D958B00DF10B2 /* ScoringToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringToolViewController.swift; sourceTree = "<group>"; };
+		C18B82501C8BB374005BD307 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		C192DC311C83453B00447EEC /* todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todo.swift; sourceTree = "<group>"; };
 		C1A414AD1C67826100A962BA /* ivolleyscore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ivolleyscore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A414B01C67826100A962BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1A414B21C67826100A962BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1A414B21C67826100A962BA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C1A414B51C67826100A962BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1A414B71C67826100A962BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1A414BA1C67826100A962BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1A414BC1C67826100A962BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButtonView.swift; sourceTree = "<group>"; };
+		C1E4A7731C67A4D30003BFC0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewMatchController.swift; sourceTree = "<group>"; };
+		C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSearchViewController.swift; sourceTree = "<group>"; };
+		C1E4A77B1C68FDC40003BFC0 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		C1E4A77E1C6908370003BFC0 /* MatchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
+		C1E4A7801C69688C0003BFC0 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +55,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806B7FC8C808EEFFE46F7C4C /* Pods_ivolleyscore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10D06271C67947500FF460F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C10D06281C67950100FF460F /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		C1A414A41C67826100A962BA = {
 			isa = PBXGroup;
 			children = (
 				C1A414AF1C67826100A962BA /* ivolleyscore */,
 				C1A414AE1C67826100A962BA /* Products */,
+				D2011B6887F52EFC60093EDD /* Pods */,
+				EF8E02D98CD075F85E71E030 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +91,74 @@
 		C1A414AF1C67826100A962BA /* ivolleyscore */ = {
 			isa = PBXGroup;
 			children = (
+				C1E4A77D1C6907DB0003BFC0 /* Views */,
+				C1E4A77A1C68FDA90003BFC0 /* Model */,
+				C1E4A7751C67FABE0003BFC0 /* Controllers */,
+				C1E4A7721C67A4C00003BFC0 /* Util */,
+				C10D06271C67947500FF460F /* Services */,
 				C1A414B01C67826100A962BA /* AppDelegate.swift */,
-				C1A414B21C67826100A962BA /* ViewController.swift */,
 				C1A414B41C67826100A962BA /* Main.storyboard */,
 				C1A414B71C67826100A962BA /* Assets.xcassets */,
 				C1A414B91C67826100A962BA /* LaunchScreen.storyboard */,
 				C1A414BC1C67826100A962BA /* Info.plist */,
+				C192DC311C83453B00447EEC /* todo.swift */,
 			);
 			path = ivolleyscore;
+			sourceTree = "<group>";
+		};
+		C1E4A7721C67A4C00003BFC0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C1E4A7731C67A4D30003BFC0 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		C1E4A7751C67FABE0003BFC0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1A414B21C67826100A962BA /* LoginViewController.swift */,
+				C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */,
+				C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */,
+				C1E4A7801C69688C0003BFC0 /* ScoreboardViewController.swift */,
+				C1827B731C6D958B00DF10B2 /* ScoringToolViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C1E4A77A1C68FDA90003BFC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C1E4A77B1C68FDC40003BFC0 /* Match.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C1E4A77D1C6907DB0003BFC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1E4A77E1C6908370003BFC0 /* MatchCell.swift */,
+				C18B82501C8BB374005BD307 /* MaterialView.swift */,
+				C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D2011B6887F52EFC60093EDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */,
+				A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EF8E02D98CD075F85E71E030 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +168,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1A414BF1C67826100A962BA /* Build configuration list for PBXNativeTarget "ivolleyscore" */;
 			buildPhases = (
+				EAED0D2CA014643003257802 /* Check Pods Manifest.lock */,
 				C1A414A91C67826100A962BA /* Sources */,
 				C1A414AA1C67826100A962BA /* Frameworks */,
 				C1A414AB1C67826100A962BA /* Resources */,
+				D380F1B2658C01847668AACC /* Embed Pods Frameworks */,
+				FB118B0DE059C92E93473AD8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +196,7 @@
 				TargetAttributes = {
 					C1A414AC1C67826100A962BA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9NKU73X7TX;
 					};
 				};
 			};
@@ -130,13 +231,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D380F1B2658C01847668AACC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAED0D2CA014643003257802 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB118B0DE059C92E93473AD8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C1A414A91C67826100A962BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1A414B31C67826100A962BA /* ViewController.swift in Sources */,
+				C10D06291C67950100FF460F /* DataService.swift in Sources */,
+				C1E4A7811C69688C0003BFC0 /* ScoreboardViewController.swift in Sources */,
+				C1A414B31C67826100A962BA /* LoginViewController.swift in Sources */,
+				C18B82511C8BB374005BD307 /* MaterialView.swift in Sources */,
 				C1A414B11C67826100A962BA /* AppDelegate.swift in Sources */,
+				C1827B741C6D958B00DF10B2 /* ScoringToolViewController.swift in Sources */,
+				C192DC321C83453B00447EEC /* todo.swift in Sources */,
+				C1E4A7741C67A4D30003BFC0 /* Constants.swift in Sources */,
+				C1E4A7791C68F9660003BFC0 /* MatchSearchViewController.swift in Sources */,
+				C1E4A7771C68427B0003BFC0 /* StartNewMatchController.swift in Sources */,
+				C1E4A77C1C68FDC40003BFC0 /* Match.swift in Sources */,
+				C1E4A77F1C6908370003BFC0 /* MatchCell.swift in Sources */,
+				C1ACB7861CBDCAD5000534A2 /* MaterialButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,23 +407,31 @@
 		};
 		C1A414C01C67826100A962BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ivolleyscore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbapps.ivolleyscore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		C1A414C11C67826100A962BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ivolleyscore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jbapps.ivolleyscore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -286,6 +454,7 @@
 				C1A414C11C67826100A962BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
