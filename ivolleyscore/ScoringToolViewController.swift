@@ -87,19 +87,15 @@ class ScoringToolViewController: UIViewController {
     @IBAction func addOneToHomeScore(sender: AnyObject) {
         
         guard let homeScoreText = homeScoreLabel.text else {
-            print("error 1")
             return
         }
         guard let homeScoreInt = Int(homeScoreText) else {
-            print("error 2")
             return
         }
         guard let homeSetsText = homeSetsLabel.text else {
-            print("error 3")
             return
         }
         guard let homeSetsInt = Int(homeSetsText) else {
-            print("error 4")
             return
         }
         print("home score: \(homeScoreInt)")
