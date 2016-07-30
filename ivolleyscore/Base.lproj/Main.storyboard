@@ -1009,7 +1009,7 @@
                                     <constraint firstAttribute="height" constant="30" id="9SC-aG-o4m"/>
                                     <constraint firstAttribute="width" constant="107" id="g3g-jS-HO7"/>
                                 </constraints>
-                                <state key="normal" title="Play To: 21"/>
+                                <state key="normal" title="Play To: 25"/>
                                 <connections>
                                     <action selector="playToButtonPressed:" destination="MSv-lB-3Cj" eventType="touchUpInside" id="7Xt-Bl-kn1"/>
                                 </connections>

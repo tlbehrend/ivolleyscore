@@ -87,22 +87,27 @@ class ScoringToolViewController: UIViewController {
     @IBAction func addOneToHomeScore(sender: AnyObject) {
         
         guard let homeScoreText = homeScoreLabel.text else {
+            print("error 1")
             return
         }
         guard let homeScoreInt = Int(homeScoreText) else {
+            print("error 2")
             return
         }
         guard let homeSetsText = homeSetsLabel.text else {
+            print("error 3")
             return
         }
         guard let homeSetsInt = Int(homeSetsText) else {
+            print("error 4")
             return
         }
+        print("home score: \(homeScoreInt)")
         
         homeScoreLabel.text = String(homeScoreInt + 1)
         homeServingImg.hidden = false
         awayServingImg.hidden = true
-        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(homeScoreInt)
+        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(homeScoreInt + 1)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeServing").setValue(true)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayServing").setValue(false)
         
@@ -119,22 +124,45 @@ class ScoringToolViewController: UIViewController {
     }
     
     @IBAction func subtractOneFromHomeScore(sender: AnyObject) {
-        if Int(homeScoreLabel.text!)! > 0 {
-            homeScoreLabel.text = String(Int(homeScoreLabel.text!)! - 1)
-            DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(Int(homeScoreLabel.text!)!)
+        
+        guard let homeScoreText = homeScoreLabel.text else {
+            return
+        }
+        guard let homeScoreInt = Int(homeScoreText) else {
+            return
+        }
+        
+        if homeScoreInt > 0 {
+            homeScoreLabel.text = String(homeScoreInt - 1)
+            DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(homeScoreInt - 1)
         }
     }
     
     @IBAction func addOneToAwayScore(sender: AnyObject) {
-        awayScoreLabel.text = String(Int(awayScoreLabel.text!)! + 1)
+        
+        guard let awayScoreText = awayScoreLabel.text else {
+            return
+        }
+        guard let awayScoreInt = Int(awayScoreText) else {
+            return
+        }
+        guard let awaySetsText = awaySetsLabel.text else {
+            return
+        }
+        guard let awaySetsInt = Int(awaySetsText) else {
+            return
+        }
+        
+        
+        awayScoreLabel.text = String(awayScoreInt + 1)
         homeServingImg.hidden = true
         awayServingImg.hidden = false
-        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayScore").setValue(Int(awayScoreLabel.text!)!)
+        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayScore").setValue(awayScoreInt + 1)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayServing").setValue(true)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeServing").setValue(false)
         
         if awayTeamWinner() {
-            if Int(awaySetsLabel.text!)! + 1 >= setsToWin {
+            if awaySetsInt + 1 >= setsToWin {
                 self.showMatchOverAlert("Match Over", msg: "Declare winner and end match?", winner: "away")
             }
             else {
@@ -144,9 +172,17 @@ class ScoringToolViewController: UIViewController {
     }
     
     @IBAction func subtractOneFromAwayScore(sender: AnyObject) {
-        if Int(awayScoreLabel.text!)! > 0 {
-            awayScoreLabel.text = String(Int(awayScoreLabel.text!)! - 1)
-            DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayScore").setValue(Int(awayScoreLabel.text!)!)
+        
+        guard let awayScoreText = awayScoreLabel.text else {
+            return
+        }
+        guard let awayScoreInt = Int(awayScoreText) else {
+            return
+        }
+        
+        if awayScoreInt > 0 {
+            awayScoreLabel.text = String(awayScoreInt - 1)
+            DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayScore").setValue(awayScoreInt - 1)
         }
     }
     
@@ -163,21 +199,34 @@ class ScoringToolViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
             
-            if winner == "home" {
-                self.homeSetsLabel.text = String(Int(self.homeSetsLabel.text!)! + 1)
+            guard let homeSetsText = self.homeSetsLabel.text else {
+                return
             }
-            else if winner == "away" {
-                self.awaySetsLabel.text = String(Int(self.awaySetsLabel.text!)! + 1)
+            guard let homeSetsInt = Int(homeSetsText) else {
+                return
+            }
+            guard let awaySetsText = self.awaySetsLabel.text else {
+                return
+            }
+            guard let awaySetsInt = Int(awaySetsText) else {
+                return
             }
             
-            if (self.pointsToWin > 15 && Int(self.homeSetsLabel.text!)! + Int(self.awaySetsLabel.text!)! + 1 == self.totalPossibleSets) {
+            if winner == "home" {
+                self.homeSetsLabel.text = String(homeSetsInt + 1)
+            }
+            else if winner == "away" {
+                self.awaySetsLabel.text = String(awaySetsInt + 1)
+            }
+            
+            if (self.pointsToWin > 15 && homeSetsInt + awaySetsInt + 1 == self.totalPossibleSets) {
                 self.pointsToWin = 15
                 self.playToButton.setTitle("Play To: 15", forState: .Normal)
             }
             
             
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(Int(self.homeSetsLabel.text!)!)
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(Int(self.awaySetsLabel.text!)!)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(homeSetsInt)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(awaySetsInt)
             DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeScore").setValue(0)
             DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awayScore").setValue(0)
             
@@ -192,21 +241,34 @@ class ScoringToolViewController: UIViewController {
     }
     
     func showMatchOverAlert(title: String, msg: String, winner: String) {
-        // TODO:
+        
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
         
         let action = UIAlertAction(title: "OK", style: .Default, handler: {
             action in
             
-            if winner == "home" {
-                self.homeSetsLabel.text = String(Int(self.homeSetsLabel.text!)! + 1)
+            guard let homeSetsText = self.homeSetsLabel.text else {
+                return
             }
-            else if winner == "away" {
-                self.awaySetsLabel.text = String(Int(self.awaySetsLabel.text!)! + 1)
+            guard let homeSetsInt = Int(homeSetsText) else {
+                return
+            }
+            guard let awaySetsText = self.awaySetsLabel.text else {
+                return
+            }
+            guard let awaySetsInt = Int(awaySetsText) else {
+                return
             }
             
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(Int(self.homeSetsLabel.text!)!)
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(Int(self.awaySetsLabel.text!)!)
+            if winner == "home" {
+                self.homeSetsLabel.text = String(homeSetsInt + 1)
+            }
+            else if winner == "away" {
+                self.awaySetsLabel.text = String(awaySetsInt + 1)
+            }
+            
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(homeSetsInt)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(awaySetsInt)
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
@@ -291,15 +353,28 @@ class ScoringToolViewController: UIViewController {
         
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
-        if Int(homeSetsLabel.text!)! < 3 && Int(awaySetsLabel.text!)! < 3 {
+        guard let homeSetsText = homeSetsLabel.text else {
+            return
+        }
+        guard let homeSetsInt = Int(homeSetsText) else {
+            return
+        }
+        guard let awaySetsText = awaySetsLabel.text else {
+            return
+        }
+        guard let awaySetsInt = Int(awaySetsText) else {
+            return
+        }
+        
+        if homeSetsInt < 3 && awaySetsInt < 3 {
             alert.addAction(action3)
         }
         
-        if Int(homeSetsLabel.text!)! < 2 && Int(awaySetsLabel.text!)! < 2 {
+        if homeSetsInt < 2 && awaySetsInt < 2 {
             alert.addAction(action2)
         }
         
-        if Int(homeSetsLabel.text!)! < 1 && Int(awaySetsLabel.text!)! < 1 {
+        if homeSetsInt < 1 && awaySetsInt < 1 {
             alert.addAction(action1)
         }
         
