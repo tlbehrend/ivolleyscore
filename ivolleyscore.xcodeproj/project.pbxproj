@@ -42,6 +42,7 @@
 		C1A414BA1C67826100A962BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1A414BC1C67826100A962BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButtonView.swift; sourceTree = "<group>"; };
+		C1D4D5C91D4D61C800B03511 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C1E4A7731C67A4D30003BFC0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewMatchController.swift; sourceTree = "<group>"; };
 		C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSearchViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		EF8E02D98CD075F85E71E030 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1D4D5C91D4D61C800B03511 /* iAd.framework */,
 				59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */,
 			);
 			name = Frameworks;
