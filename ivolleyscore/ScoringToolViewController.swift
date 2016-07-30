@@ -85,15 +85,29 @@ class ScoringToolViewController: UIViewController {
     }
     
     @IBAction func addOneToHomeScore(sender: AnyObject) {
-        homeScoreLabel.text = String(Int(homeScoreLabel.text!)! + 1)
+        
+        guard let homeScoreText = homeScoreLabel.text else {
+            return
+        }
+        guard let homeScoreInt = Int(homeScoreText) else {
+            return
+        }
+        guard let homeSetsText = homeSetsLabel.text else {
+            return
+        }
+        guard let homeSetsInt = Int(homeSetsText) else {
+            return
+        }
+        
+        homeScoreLabel.text = String(homeScoreInt + 1)
         homeServingImg.hidden = false
         awayServingImg.hidden = true
-        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(Int(homeScoreLabel.text!)!)
+        DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeScore").setValue(homeScoreInt)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("homeServing").setValue(true)
         DataService.ds.REF_MATCHES.childByAppendingPath(matchKey).childByAppendingPath("awayServing").setValue(false)
         
         if homeTeamWinner() {
-            if Int(homeSetsLabel.text!)! + 1 >= setsToWin {
+            if homeSetsInt + 1 >= setsToWin {
                 self.showMatchOverAlert("Match Over", msg: "Declare winner and end match?", winner: "home")
             }
             else {
@@ -156,7 +170,7 @@ class ScoringToolViewController: UIViewController {
                 self.awaySetsLabel.text = String(Int(self.awaySetsLabel.text!)! + 1)
             }
             
-            if (Int(self.homeSetsLabel.text!)! + 1 == self.setsToWin) || (Int(self.awaySetsLabel.text!)! + 1 == self.setsToWin) {
+            if (self.pointsToWin > 15 && Int(self.homeSetsLabel.text!)! + Int(self.awaySetsLabel.text!)! + 1 == self.totalPossibleSets) {
                 self.pointsToWin = 15
                 self.playToButton.setTitle("Play To: 15", forState: .Normal)
             }
@@ -207,47 +221,35 @@ class ScoringToolViewController: UIViewController {
     }
     
     func homeTeamWinner() -> Bool {
-        // if this is single game match (setsToWin == 1) or this is NOT last game
-        // the game will go to 25, otherwise, it will go to 15
-//        if (setsToWin == 1 || Int(homeSetsLabel.text!)! + Int(awaySetsLabel.text!)! + 1 < totalPossibleSets) {
-//            if Int(homeScoreLabel.text!)! >= 25 && (Int(homeScoreLabel.text!)! - Int(awayScoreLabel.text!)!) > 1 {
-//                return true
-//            }
-//            return false
-//        }
-//        else {
-//            if Int(homeScoreLabel.text!)! >= 15 && (Int(homeScoreLabel.text!)! - Int(awayScoreLabel.text!)!) > 1 {
-//                return true
-//            }
-//            return false
-//        }
         
-        if Int(homeScoreLabel.text!)! >= pointsToWin && (Int(homeScoreLabel.text!)! - Int(awayScoreLabel.text!)!) > 1 {
-            return true
+        if let homeScoreText = homeScoreLabel.text, let awayScoreText = awayScoreLabel.text {
+            if let homeScore = Int(homeScoreText), let awayScore = Int(awayScoreText) {
+                if (homeScore >= pointsToWin) && ((homeScore - awayScore) > 1) {
+                    return true
+                }
+                return false
+            }
+            return false
         }
         return false
-        
         
     }
     
     func awayTeamWinner() -> Bool {
-        // if this is single game match (setsToWin == 1) or this is NOT last game
-        // the game will go to 25, otherwise, it will go to 15
-//        if (setsToWin == 1 || Int(awaySetsLabel.text!)! + Int(homeSetsLabel.text!)! + 1 < totalPossibleSets) {
-//            if Int(awayScoreLabel.text!)! >= 25 && (Int(awayScoreLabel.text!)! - Int(homeScoreLabel.text!)!) > 1 {
-//                return true
-//            }
-//            return false
-//        }
-//        else {
-//            if Int(awayScoreLabel.text!)! >= 15 && (Int(awayScoreLabel.text!)! - Int(homeScoreLabel.text!)!) > 1 {
-//                return true
-//            }
-//            return false
-//        }
         
-        if Int(awayScoreLabel.text!)! >= pointsToWin && (Int(awayScoreLabel.text!)! - Int(homeScoreLabel.text!)!) > 1 {
-            return true
+//        if Int(awayScoreLabel.text!)! >= pointsToWin && (Int(awayScoreLabel.text!)! - Int(homeScoreLabel.text!)!) > 1 {
+//            return true
+//        }
+//        return false
+        
+        if let homeScoreText = homeScoreLabel.text, let awayScoreText = awayScoreLabel.text {
+            if let homeScore = Int(homeScoreText), let awayScore = Int(awayScoreText) {
+                if (awayScore >= pointsToWin) && ((awayScore - homeScore) > 1) {
+                    return true
+                }
+                return false
+            }
+            return false
         }
         return false
         
@@ -313,10 +315,21 @@ class ScoringToolViewController: UIViewController {
         let alert = UIAlertController(title: title, message: "Points to Win", preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            
             textField.placeholder = "Points needed to win this game"
+            textField.keyboardType = UIKeyboardType.NumberPad
+            
         }
         
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        
+            if let newPoints = alert.textFields![0].text {
+                if let newPointsAsInt = Int(newPoints) {
+                    self.playToButton.setTitle("Play To: \(newPoints)", forState: .Normal)
+                    self.pointsToWin = newPointsAsInt
+                }
+            }
+        })
         
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
