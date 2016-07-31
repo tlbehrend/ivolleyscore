@@ -212,11 +212,11 @@ class ScoringToolViewController: UIViewController {
             
             if winner == "home" {
                 newHomeSets += 1
-                self.homeSetsLabel.text = String(homeSetsInt)
+                self.homeSetsLabel.text = String(newHomeSets)
             }
             else if winner == "away" {
                 newAwaySets += 1
-                self.awaySetsLabel.text = String(awaySetsInt + 1)
+                self.awaySetsLabel.text = String(newAwaySets)
             }
             
             if (self.pointsToWin > 15 && (newHomeSets + newAwaySets + 1 == self.totalPossibleSets)) {
@@ -260,11 +260,16 @@ class ScoringToolViewController: UIViewController {
                 return
             }
             
+            var newHomeSets = homeSetsInt
+            var newAwaySets = awaySetsInt
+            
             if winner == "home" {
-                self.homeSetsLabel.text = String(homeSetsInt + 1)
+                newHomeSets += 1
+                self.homeSetsLabel.text = String(newHomeSets)
             }
             else if winner == "away" {
-                self.awaySetsLabel.text = String(awaySetsInt + 1)
+                newAwaySets += 1
+                self.awaySetsLabel.text = String(newAwaySets)
             }
             
             DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(homeSetsInt)
