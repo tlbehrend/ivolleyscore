@@ -9,24 +9,26 @@
 import Foundation
 import Firebase
 
-let URL_BASE = "https://ivolleyscore.firebaseio.com"
+//let URL_BASE = "https://ivolleyscore.firebaseio.com"
+
+let rootRef = FIRDatabase.database().reference()
 
 class DataService {
     static let ds = DataService()
     
-    private var _REF_BASE = Firebase(url: "\(URL_BASE)")
-    private var _REF_USERS = Firebase(url: "\(URL_BASE)/users")
-    private var _REF_MATCHES = Firebase(url: "\(URL_BASE)/matches")
+    private var _REF_BASE = rootRef
+    private var _REF_USERS = rootRef.child("users")
+    private var _REF_MATCHES = rootRef.child("matches")
     
-    var REF_BASE: Firebase {
+    var REF_BASE: FIRDatabaseReference {
         return _REF_BASE
     }
     
-    var REF_USERS: Firebase {
+    var REF_USERS: FIRDatabaseReference {
         return _REF_USERS
     }
     
-    var REF_MATCHES: Firebase {
+    var REF_MATCHES: FIRDatabaseReference {
         return _REF_MATCHES
     }
     
@@ -39,7 +41,7 @@ class DataService {
 //    }
     
     func createFirebaseUser(uid: String, user: Dictionary <String, String>){
-        REF_USERS.childByAppendingPath(uid).setValue(user)
+        REF_USERS.child(uid).setValue(user)
     }
     
     

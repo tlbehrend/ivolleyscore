@@ -42,7 +42,7 @@ class MatchSearchViewController: UIViewController, UITableViewDelegate, UITableV
 //            print(snapshot.value)
             self.matches = []
             
-            if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 for snap in snapshots {
                     //print("SNAP: \(snap)")

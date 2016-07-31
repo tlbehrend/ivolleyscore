@@ -1,11 +1,16 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '8.0'
-# Uncomment this line if you're using Swift
-use_frameworks!
+# platform :ios, '9.0'
 
 target 'ivolleyscore' do
-pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/AdMob'
+    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    # Pods for ivolleyscore
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/AdMob'
+    
+    
 end
 

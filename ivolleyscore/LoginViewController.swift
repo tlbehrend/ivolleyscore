@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -41,11 +42,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
 
         
-        if DataService.ds.REF_BASE.authData != nil {
-            // already logged in, so let's hide email/pwd fields for login
-            self.showLoggedInOptions()
-            
-        }
+//        if DataService.ds.REF_BASE.authData != nil {
+//            // already logged in, so let's hide email/pwd fields for login
+//            self.showLoggedInOptions()
+//            
+//        }
         
     }
     
@@ -118,63 +119,63 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginView.bringSubviewToFront(spinner)
             spinner.startAnimating()
             
-            DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
-                
-                if error != nil {
-                    
-                    switch error.code {
-                    case STATUS_INVALID_EMAIL:
-                        self.spinner.stopAnimating()
-                        self.showErrorAlert("Invalid Email", msg: "Please enter a valid email address")
-                    case STATUS_INVALID_PWD:
-                        self.spinner.stopAnimating()
-                        self.showResetPasswordAlert("Invalid Password", msg: "Password in not correct", email: email)
-                        //self.showErrorAlert("Invalid Password", msg: "Password is not correct")
-                    case STATUS_NETWORK_ERROR:
-                        self.spinner.stopAnimating()
-                        self.showErrorAlert("Network Error", msg: "Sorry, there is no internet connection available.")
-                    case STATUS_ACCOUNT_NONEXIST:
-                        // this user does not have account, so we will create one now
-                        
-                        DataService.ds.REF_BASE.createUser(email, password: pwd, withValueCompletionBlock: { err, result in
-                            
-                            if err != nil {
-                                self.spinner.stopAnimating()
-                                self.showErrorAlert("Unable to Create Account", msg: "Error creating account.  Error code \(err.code)")
-                            }
-                            else{
-                                
-                                NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
-                                
-                                DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { err, authData in
-                                    
-                                    let user = ["email": email]
-                                    DataService.ds.createFirebaseUser(authData.uid, user: user)
-                                    
-                                })
-                                
-                                //self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-                                self.spinner.stopAnimating()
-                                self.showLoggedInOptions()
-                            }
-                        })
-                    default:
-//                        print(error)
-                        self.showErrorAlert("Error Logging In", msg: "Error code \(error.code)")
-                    }
-                    
-                }
-                // error is nil, meaning log in is successful
-                else {
-                    
-                    self.spinner.stopAnimating()
-                    
-                    if self.passwordReset {
-                        self.changePasswordAlert(email, oldPW: pwd)
-                    }
-                    self.showLoggedInOptions()
-                }
-            })
+//            DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
+//                
+//                if error != nil {
+//                    
+//                    switch error.code {
+//                    case STATUS_INVALID_EMAIL:
+//                        self.spinner.stopAnimating()
+//                        self.showErrorAlert("Invalid Email", msg: "Please enter a valid email address")
+//                    case STATUS_INVALID_PWD:
+//                        self.spinner.stopAnimating()
+//                        self.showResetPasswordAlert("Invalid Password", msg: "Password in not correct", email: email)
+//                        //self.showErrorAlert("Invalid Password", msg: "Password is not correct")
+//                    case STATUS_NETWORK_ERROR:
+//                        self.spinner.stopAnimating()
+//                        self.showErrorAlert("Network Error", msg: "Sorry, there is no internet connection available.")
+//                    case STATUS_ACCOUNT_NONEXIST:
+//                        // this user does not have account, so we will create one now
+//                        
+//                        DataService.ds.REF_BASE.createUser(email, password: pwd, withValueCompletionBlock: { err, result in
+//                            
+//                            if err != nil {
+//                                self.spinner.stopAnimating()
+//                                self.showErrorAlert("Unable to Create Account", msg: "Error creating account.  Error code \(err.code)")
+//                            }
+//                            else{
+//                                
+//                                NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
+//                                
+//                                DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { err, authData in
+//                                    
+//                                    let user = ["email": email]
+//                                    DataService.ds.createFirebaseUser(authData.uid, user: user)
+//                                    
+//                                })
+//                                
+//                                //self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+//                                self.spinner.stopAnimating()
+//                                self.showLoggedInOptions()
+//                            }
+//                        })
+//                    default:
+////                        print(error)
+//                        self.showErrorAlert("Error Logging In", msg: "Error code \(error.code)")
+//                    }
+//                    
+//                }
+//                // error is nil, meaning log in is successful
+//                else {
+//                    
+//                    self.spinner.stopAnimating()
+//                    
+//                    if self.passwordReset {
+//                        self.changePasswordAlert(email, oldPW: pwd)
+//                    }
+//                    self.showLoggedInOptions()
+//                }
+//            })
         }
         else {
             showErrorAlert("Email and Password Required", msg: "You must enter both email and password")
@@ -195,19 +196,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             resetAction in
             
-            DataService.ds.REF_BASE.resetPasswordForUser(email, withCompletionBlock: {
-            
-                error in
-                
-                if error != nil {
-//                    print("error sending password reset email")
-                    
-                } else {
-//                    print("password reset email sent")
-                    self.passwordReset = true
-                    self.showErrorAlert("Password Reset", msg: "Check your email for your temporary password")
-                }
-            })
+//            DataService.ds.REF_BASE.resetPasswordForUser(email, withCompletionBlock: {
+//            
+//                error in
+//                
+//                if error != nil {
+////                    print("error sending password reset email")
+//                    
+//                } else {
+////                    print("password reset email sent")
+//                    self.passwordReset = true
+//                    self.showErrorAlert("Password Reset", msg: "Check your email for your temporary password")
+//                }
+//            })
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -268,18 +269,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changePassword(user: String, oldPW: String, newPW: String) {
-        DataService.ds.REF_BASE.changePasswordForUser(user, fromOld: oldPW, toNew: newPW, withCompletionBlock: {
         
-            error in
-            
-            if error != nil {
-//                print(error)
-            }
-            else {
-                self.passwordReset = false
-//                print("successful password change")
-            }
-        })
+        print("change pwd called")
+        
+//        DataService.ds.REF_BASE.changePasswordForUser(user, fromOld: oldPW, toNew: newPW, withCompletionBlock: {
+//        
+//            error in
+//            
+//            if error != nil {
+////                print(error)
+//            }
+//            else {
+//                self.passwordReset = false
+////                print("successful password change")
+//            }
+//        })
     }
     
     func showLoggedInOptions() {
@@ -290,7 +294,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logout(sender: AnyObject) {
-        DataService.ds.REF_BASE.unauth()
+//        DataService.ds.REF_BASE.unauth()
         loginView.hidden = false
         scoreView.hidden = true
         scoreGameBtn.hidden = true
