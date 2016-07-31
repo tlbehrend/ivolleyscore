@@ -4,6 +4,8 @@
 use_frameworks!
 
 target 'ivolleyscore' do
-pod 'Firebase', '>= 2.5.0'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/AdMob'
 end
 

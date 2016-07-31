@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		806B7FC8C808EEFFE46F7C4C /* Pods_ivolleyscore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */; };
+		29B7490B83E28FF19A4BE79A /* Pods_ivolleyscore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212AC9274EA7F01358CB2DF6 /* Pods_ivolleyscore.framework */; };
 		C10D06291C67950100FF460F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D06281C67950100FF460F /* DataService.swift */; };
 		C1827B741C6D958B00DF10B2 /* ScoringToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1827B731C6D958B00DF10B2 /* ScoringToolViewController.swift */; };
 		C18B82511C8BB374005BD307 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B82501C8BB374005BD307 /* MaterialView.swift */; };
@@ -18,6 +18,7 @@
 		C1A414B81C67826100A962BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1A414B71C67826100A962BA /* Assets.xcassets */; };
 		C1A414BB1C67826100A962BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1A414B91C67826100A962BA /* LaunchScreen.storyboard */; };
 		C1ACB7861CBDCAD5000534A2 /* MaterialButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */; };
+		C1D4D5EC1D4DFC8800B03511 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D4D5EB1D4DFC8800B03511 /* GoogleService-Info-2.plist */; };
 		C1E4A7741C67A4D30003BFC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7731C67A4D30003BFC0 /* Constants.swift */; };
 		C1E4A7771C68427B0003BFC0 /* StartNewMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */; };
 		C1E4A7791C68F9660003BFC0 /* MatchSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */; };
@@ -27,9 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.debug.xcconfig"; sourceTree = "<group>"; };
-		59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ivolleyscore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.release.xcconfig"; sourceTree = "<group>"; };
+		212AC9274EA7F01358CB2DF6 /* Pods_ivolleyscore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ivolleyscore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10D06281C67950100FF460F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C1827B731C6D958B00DF10B2 /* ScoringToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringToolViewController.swift; sourceTree = "<group>"; };
 		C18B82501C8BB374005BD307 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
@@ -42,13 +41,15 @@
 		C1A414BA1C67826100A962BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1A414BC1C67826100A962BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1ACB7851CBDCAD5000534A2 /* MaterialButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButtonView.swift; sourceTree = "<group>"; };
-		C1D4D5C91D4D61C800B03511 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		C1D4D5EB1D4DFC8800B03511 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		C1E4A7731C67A4D30003BFC0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1E4A7761C68427B0003BFC0 /* StartNewMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewMatchController.swift; sourceTree = "<group>"; };
 		C1E4A7781C68F9660003BFC0 /* MatchSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSearchViewController.swift; sourceTree = "<group>"; };
 		C1E4A77B1C68FDC40003BFC0 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		C1E4A77E1C6908370003BFC0 /* MatchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
 		C1E4A7801C69688C0003BFC0 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
+		EE4D2979B6B2E858E0566562 /* Pods-ivolleyscore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.debug.xcconfig"; sourceTree = "<group>"; };
+		F59AA52163D55FFB14CDF169 /* Pods-ivolleyscore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ivolleyscore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +57,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				806B7FC8C808EEFFE46F7C4C /* Pods_ivolleyscore.framework in Frameworks */,
+				29B7490B83E28FF19A4BE79A /* Pods_ivolleyscore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A46E2F2A776E7EFA593E1656 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE4D2979B6B2E858E0566562 /* Pods-ivolleyscore.debug.xcconfig */,
+				F59AA52163D55FFB14CDF169 /* Pods-ivolleyscore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C10D06271C67947500FF460F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,10 +84,11 @@
 		C1A414A41C67826100A962BA = {
 			isa = PBXGroup;
 			children = (
+				C1D4D5EB1D4DFC8800B03511 /* GoogleService-Info-2.plist */,
 				C1A414AF1C67826100A962BA /* ivolleyscore */,
 				C1A414AE1C67826100A962BA /* Products */,
-				D2011B6887F52EFC60093EDD /* Pods */,
 				EF8E02D98CD075F85E71E030 /* Frameworks */,
+				A46E2F2A776E7EFA593E1656 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,20 +156,10 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		D2011B6887F52EFC60093EDD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */,
-				A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		EF8E02D98CD075F85E71E030 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C1D4D5C91D4D61C800B03511 /* iAd.framework */,
-				59350A61A9C5551DE7FE8525 /* Pods_ivolleyscore.framework */,
+				212AC9274EA7F01358CB2DF6 /* Pods_ivolleyscore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,12 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1A414BF1C67826100A962BA /* Build configuration list for PBXNativeTarget "ivolleyscore" */;
 			buildPhases = (
-				EAED0D2CA014643003257802 /* Check Pods Manifest.lock */,
+				303654B90C312CCC32A9D7D8 /* 📦 Check Pods Manifest.lock */,
 				C1A414A91C67826100A962BA /* Sources */,
 				C1A414AA1C67826100A962BA /* Frameworks */,
 				C1A414AB1C67826100A962BA /* Resources */,
-				D380F1B2658C01847668AACC /* Embed Pods Frameworks */,
-				FB118B0DE059C92E93473AD8 /* Copy Pods Resources */,
+				28745B60858A0A82A541539E /* 📦 Embed Pods Frameworks */,
+				8592B17D9ABE77B8D63A6DCC /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,6 +228,7 @@
 			files = (
 				C1A414BB1C67826100A962BA /* LaunchScreen.storyboard in Resources */,
 				C1A414B81C67826100A962BA /* Assets.xcassets in Resources */,
+				C1D4D5EC1D4DFC8800B03511 /* GoogleService-Info-2.plist in Resources */,
 				C1A414B61C67826100A962BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,14 +236,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D380F1B2658C01847668AACC /* Embed Pods Frameworks */ = {
+		28745B60858A0A82A541539E /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,14 +251,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ivolleyscore/Pods-ivolleyscore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAED0D2CA014643003257802 /* Check Pods Manifest.lock */ = {
+		303654B90C312CCC32A9D7D8 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,14 +266,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FB118B0DE059C92E93473AD8 /* Copy Pods Resources */ = {
+		8592B17D9ABE77B8D63A6DCC /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +411,7 @@
 		};
 		C1A414C01C67826100A962BA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 223EF1C7D080DF7253CDC3D0 /* Pods-ivolleyscore.debug.xcconfig */;
+			baseConfigurationReference = EE4D2979B6B2E858E0566562 /* Pods-ivolleyscore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -424,7 +426,7 @@
 		};
 		C1A414C11C67826100A962BA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9D9487F7DB301EB02AF6930 /* Pods-ivolleyscore.release.xcconfig */;
+			baseConfigurationReference = F59AA52163D55FFB14CDF169 /* Pods-ivolleyscore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
