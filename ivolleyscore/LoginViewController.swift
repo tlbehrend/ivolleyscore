@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var viewMoved = false
-    var passwordReset = false
+    //var passwordReset = false
     
     
     override func viewDidLoad() {
@@ -40,13 +40,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-
         
-//        if DataService.ds.REF_BASE.authData != nil {
-//            // already logged in, so let's hide email/pwd fields for login
-//            self.showLoggedInOptions()
-//            
-//        }
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            if user != nil {
+                // User is signed in.
+                print("signed in")
+                self.showLoggedInOptions()
+            } else {
+                // No user is signed in.
+                print("not signed in")
+            }
+        }
+        
         
     }
     
@@ -119,63 +124,70 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginView.bringSubviewToFront(spinner)
             spinner.startAnimating()
             
-//            DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
-//                
-//                if error != nil {
-//                    
-//                    switch error.code {
-//                    case STATUS_INVALID_EMAIL:
-//                        self.spinner.stopAnimating()
-//                        self.showErrorAlert("Invalid Email", msg: "Please enter a valid email address")
-//                    case STATUS_INVALID_PWD:
-//                        self.spinner.stopAnimating()
-//                        self.showResetPasswordAlert("Invalid Password", msg: "Password in not correct", email: email)
-//                        //self.showErrorAlert("Invalid Password", msg: "Password is not correct")
-//                    case STATUS_NETWORK_ERROR:
-//                        self.spinner.stopAnimating()
-//                        self.showErrorAlert("Network Error", msg: "Sorry, there is no internet connection available.")
-//                    case STATUS_ACCOUNT_NONEXIST:
-//                        // this user does not have account, so we will create one now
-//                        
-//                        DataService.ds.REF_BASE.createUser(email, password: pwd, withValueCompletionBlock: { err, result in
-//                            
-//                            if err != nil {
-//                                self.spinner.stopAnimating()
-//                                self.showErrorAlert("Unable to Create Account", msg: "Error creating account.  Error code \(err.code)")
-//                            }
-//                            else{
-//                                
-//                                NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
-//                                
-//                                DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { err, authData in
-//                                    
-//                                    let user = ["email": email]
-//                                    DataService.ds.createFirebaseUser(authData.uid, user: user)
-//                                    
-//                                })
-//                                
-//                                //self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-//                                self.spinner.stopAnimating()
-//                                self.showLoggedInOptions()
-//                            }
-//                        })
-//                    default:
-////                        print(error)
-//                        self.showErrorAlert("Error Logging In", msg: "Error code \(error.code)")
-//                    }
-//                    
-//                }
-//                // error is nil, meaning log in is successful
-//                else {
-//                    
-//                    self.spinner.stopAnimating()
-//                    
+            FIRAuth.auth()?.signInWithEmail(email, password: pwd) { (user, error) in
+                
+                if let error = error {
+                    print("invalid email")
+                    print(error.code)
+                    print(error.debugDescription)
+                    switch error.code {
+                    case FB_AUTH_INVALID_EMAIL:
+                        self.spinner.stopAnimating()
+                        self.showErrorAlert("Invalid Email", msg: "Please enter a valid email address")
+                    case FB_AUTH_INVALID_PWD:
+                        self.spinner.stopAnimating()
+                        self.showResetPasswordAlert("Invalid Password", msg: "Password in not correct", email: email)
+                    case FB_AUTH_NETWORK_ERROR:
+                        self.spinner.stopAnimating()
+                        self.showErrorAlert("Network Error", msg: "Sorry, there is no internet connection available")
+                    case FB_AUTH_USER_NOT_FOUND:
+                        // this user does not have account, so we will create one now
+                        // creating the account also signs in the user
+                        
+                        FIRAuth.auth()?.createUserWithEmail(email, password: pwd, completion: { (user, error) in
+                            
+                            if let createUserError = error {
+                                
+                                self.spinner.stopAnimating()
+                                
+                                switch createUserError.code {
+                                case FB_AUTH_INVALID_EMAIL:
+                                    self.showErrorAlert("Invalid Email", msg: "Please enter a valid email address")
+                                case FB_AUTH_PWD_TOO_SHORT:
+                                    self.showErrorAlert("Weak Password", msg: "The password must be at least 6 characters long")
+                                default:
+                                    //print(createUserError)
+                                    self.showErrorAlert("Error Creating Account", msg: "Error code \(createUserError.code)")
+                                }
+                            }
+                            else{
+                                // successfully created new account and logged in user
+                                
+                                //print(user!.uid)
+                                if let user = user {
+                                    NSUserDefaults.standardUserDefaults().setValue(user.uid, forKey: KEY_UID)
+                                    self.spinner.stopAnimating()
+                                    self.showLoggedInOptions()
+                                }
+                            }
+                        })
+                    default:
+                        print(error)
+                        self.showErrorAlert("Error Logging In", msg: "Error code \(error.code)")
+                    }
+                }
+                else {
+                    print("No error, so logged in successfully")
+                    self.spinner.stopAnimating()
+                    
 //                    if self.passwordReset {
 //                        self.changePasswordAlert(email, oldPW: pwd)
 //                    }
-//                    self.showLoggedInOptions()
-//                }
-//            })
+                    self.showLoggedInOptions()
+                }
+                
+            }
+            
         }
         else {
             showErrorAlert("Email and Password Required", msg: "You must enter both email and password")
@@ -196,19 +208,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             resetAction in
             
-//            DataService.ds.REF_BASE.resetPasswordForUser(email, withCompletionBlock: {
-//            
-//                error in
-//                
-//                if error != nil {
-////                    print("error sending password reset email")
-//                    
-//                } else {
-////                    print("password reset email sent")
-//                    self.passwordReset = true
-//                    self.showErrorAlert("Password Reset", msg: "Check your email for your temporary password")
-//                }
-//            })
+            FIRAuth.auth()?.sendPasswordResetWithEmail(email) { error in
+                if error != nil {
+                    // An error happened.
+                    self.showErrorAlert("Error", msg: "Sorry, there was an error emailing you a new password")
+                } else {
+                    // Password reset email sent.
+                    print("password reset email sent")
+                    // don't need the check for passwordReset because can directly reset in web
+                    // rather than old version of FB which sent random password, so this was to update
+                    // to something that could be remembered
+                    //self.passwordReset = true
+                    self.showErrorAlert("Password Reset", msg: "Check your email for your temporary password")
+                }
+            }
+            
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -219,72 +233,74 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
     }
     
-    func changePasswordAlert(email: String, oldPW: String) {
-        
-        let alert = UIAlertController(title: "Change Password", message: "", preferredStyle: .Alert)
-        
-        alert.addTextFieldWithConfigurationHandler({
-            (textField : UITextField!) -> Void in
-            
-            textField.placeholder = "Enter New Password"
-            textField.secureTextEntry = true
-        })
-        
-        alert.addTextFieldWithConfigurationHandler({
-            (textField : UITextField!) -> Void in
-            
-            textField.placeholder = "Re-Enter New Password"
-            textField.secureTextEntry = true
-        })
-        
-        let changePWAction = UIAlertAction(title: "Change PW", style: .Default, handler: {
-        
-            changePWAction in
-            
-            let pw1TextField = alert.textFields![0] as UITextField
-            let pw2TextField = alert.textFields![1] as UITextField
-            
-            if let pw1 = pw1TextField.text where pw1 != "", let pw2 = pw2TextField.text where pw2 != "" {
-                
-                if pw1 == pw2 {
-//                    print("passwords match - will reset for user: \(email)")
-//                    print("oldpw: \(oldPW)")
-//                    print("newpw: \(pw1)")
-                    
-                    self.changePassword(email, oldPW: oldPW, newPW: pw1)
-                    
-                } else {
-//                    print("passwords do not match")
-                }
-                
-            }
-            
-        })
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        alert.addAction(changePWAction)
-        alert.addAction(cancel)
-        presentViewController(alert, animated: true, completion: nil)
-    }
+    // new Firebase let's user change directly to a password they can remember, so don't need this
     
-    func changePassword(user: String, oldPW: String, newPW: String) {
-        
-        print("change pwd called")
-        
-//        DataService.ds.REF_BASE.changePasswordForUser(user, fromOld: oldPW, toNew: newPW, withCompletionBlock: {
+//    func changePasswordAlert(email: String, oldPW: String) {
 //        
-//            error in
+//        let alert = UIAlertController(title: "Change Password", message: "", preferredStyle: .Alert)
+//        
+//        alert.addTextFieldWithConfigurationHandler({
+//            (textField : UITextField!) -> Void in
 //            
-//            if error != nil {
-////                print(error)
-//            }
-//            else {
-//                self.passwordReset = false
-////                print("successful password change")
-//            }
+//            textField.placeholder = "Enter New Password"
+//            textField.secureTextEntry = true
 //        })
-    }
+//        
+//        alert.addTextFieldWithConfigurationHandler({
+//            (textField : UITextField!) -> Void in
+//            
+//            textField.placeholder = "Re-Enter New Password"
+//            textField.secureTextEntry = true
+//        })
+//        
+//        let changePWAction = UIAlertAction(title: "Change PW", style: .Default, handler: {
+//        
+//            changePWAction in
+//            
+//            let pw1TextField = alert.textFields![0] as UITextField
+//            let pw2TextField = alert.textFields![1] as UITextField
+//            
+//            if let pw1 = pw1TextField.text where pw1 != "", let pw2 = pw2TextField.text where pw2 != "" {
+//                
+//                if pw1 == pw2 {
+////                    print("passwords match - will reset for user: \(email)")
+////                    print("oldpw: \(oldPW)")
+////                    print("newpw: \(pw1)")
+//                    
+//                    self.changePassword(email, oldPW: oldPW, newPW: pw1)
+//                    
+//                } else {
+////                    print("passwords do not match")
+//                }
+//                
+//            }
+//            
+//        })
+//        
+//        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        
+//        alert.addAction(changePWAction)
+//        alert.addAction(cancel)
+//        presentViewController(alert, animated: true, completion: nil)
+//    }
+    
+//    func changePassword(user: String, oldPW: String, newPW: String) {
+//        
+//        print("change pwd called")
+//        
+//        
+//        let user = FIRAuth.auth()?.currentUser
+//        //let newPassword = getRandomSecurePassword()
+//        
+//        user?.updatePassword(newPW) { error in
+//            if let error = error {
+//                // An error happened.
+//            } else {
+//                // Password updated.
+//            }
+//        }
+//    
+//    }
     
     func showLoggedInOptions() {
         loginView.hidden = true
@@ -294,7 +310,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logout(sender: AnyObject) {
-//        DataService.ds.REF_BASE.unauth()
+        
+        try! FIRAuth.auth()!.signOut()
+        
+        passwordTextField.text = ""
+        
         loginView.hidden = false
         scoreView.hidden = true
         scoreGameBtn.hidden = true
