@@ -159,7 +159,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             }
                         })
                     default:
-                        print(error)
+//                        print(error)
                         self.showErrorAlert("Error Logging In", msg: "Error code \(error.code)")
                     }
                     
@@ -200,10 +200,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 error in
                 
                 if error != nil {
-                    print("error sending password reset email")
+//                    print("error sending password reset email")
                     
                 } else {
-                    print("password reset email sent")
+//                    print("password reset email sent")
                     self.passwordReset = true
                     self.showErrorAlert("Password Reset", msg: "Check your email for your temporary password")
                 }
@@ -246,14 +246,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if let pw1 = pw1TextField.text where pw1 != "", let pw2 = pw2TextField.text where pw2 != "" {
                 
                 if pw1 == pw2 {
-                    print("passwords match - will reset for user: \(email)")
-                    print("oldpw: \(oldPW)")
-                    print("newpw: \(pw1)")
+//                    print("passwords match - will reset for user: \(email)")
+//                    print("oldpw: \(oldPW)")
+//                    print("newpw: \(pw1)")
                     
                     self.changePassword(email, oldPW: oldPW, newPW: pw1)
                     
                 } else {
-                    print("passwords do not match")
+//                    print("passwords do not match")
                 }
                 
             }
@@ -273,11 +273,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             error in
             
             if error != nil {
-                print(error)
+//                print(error)
             }
             else {
                 self.passwordReset = false
-                print("successful password change")
+//                print("successful password change")
             }
         })
     }

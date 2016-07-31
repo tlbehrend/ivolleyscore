@@ -219,7 +219,7 @@ class ScoringToolViewController: UIViewController {
                 self.awaySetsLabel.text = String(awaySetsInt + 1)
             }
             
-            if (self.pointsToWin > 15 && homeSetsInt + awaySetsInt + 1 == self.totalPossibleSets) {
+            if (self.pointsToWin > 15 && (newHomeSets + newAwaySets + 1 == self.totalPossibleSets)) {
                 self.pointsToWin = 15
                 self.playToButton.setTitle("Play To: 15", forState: .Normal)
             }

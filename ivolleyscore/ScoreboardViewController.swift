@@ -30,7 +30,7 @@ class ScoreboardViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("CHOSE:\(chosenMatch)")
+//        print("CHOSE:\(chosenMatch)")
         
         DataService.ds.REF_MATCHES.childByAppendingPath(chosenMatch).observeEventType(.Value, withBlock: {
             snapshot in

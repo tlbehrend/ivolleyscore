@@ -39,7 +39,7 @@ class MatchSearchViewController: UIViewController, UITableViewDelegate, UITableV
             
             snapshot in
             
-            print(snapshot.value)
+//            print(snapshot.value)
             self.matches = []
             
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
@@ -150,15 +150,8 @@ class MatchSearchViewController: UIViewController, UITableViewDelegate, UITableV
         if segue.identifier ==  SEGUE_SCOREBOARD {
             if let destinationVC = segue.destinationViewController as? ScoreboardViewController {
                 destinationVC.chosenMatch = chosenMatch
-                print("destinationVC data set to: \(chosenMatch)")
+//                print("destinationVC data set to: \(chosenMatch)")
             }
-            else {
-                print("wrong type VC")
-            }
-            
-        }
-        else{
-            print("wrong segue identifier")
         }
     }
     
