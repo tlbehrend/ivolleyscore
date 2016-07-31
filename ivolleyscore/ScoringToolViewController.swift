@@ -98,7 +98,6 @@ class ScoringToolViewController: UIViewController {
         guard let homeSetsInt = Int(homeSetsText) else {
             return
         }
-        print("home score: \(homeScoreInt)")
         
         homeScoreLabel.text = String(homeScoreInt + 1)
         homeServingImg.hidden = false
@@ -208,10 +207,15 @@ class ScoringToolViewController: UIViewController {
                 return
             }
             
+            var newHomeSets = homeSetsInt
+            var newAwaySets = awaySetsInt
+            
             if winner == "home" {
-                self.homeSetsLabel.text = String(homeSetsInt + 1)
+                newHomeSets += 1
+                self.homeSetsLabel.text = String(homeSetsInt)
             }
             else if winner == "away" {
+                newAwaySets += 1
                 self.awaySetsLabel.text = String(awaySetsInt + 1)
             }
             
@@ -221,8 +225,8 @@ class ScoringToolViewController: UIViewController {
             }
             
             
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(homeSetsInt)
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(awaySetsInt)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(newHomeSets)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(newAwaySets)
             DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeScore").setValue(0)
             DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awayScore").setValue(0)
             
