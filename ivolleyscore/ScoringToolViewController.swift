@@ -272,8 +272,8 @@ class ScoringToolViewController: UIViewController {
                 self.awaySetsLabel.text = String(newAwaySets)
             }
             
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(homeSetsInt)
-            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(awaySetsInt)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("homeSets").setValue(newHomeSets)
+            DataService.ds.REF_MATCHES.childByAppendingPath(self.matchKey).childByAppendingPath("awaySets").setValue(newAwaySets)
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
