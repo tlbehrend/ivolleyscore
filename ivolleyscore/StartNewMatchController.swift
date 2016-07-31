@@ -72,6 +72,8 @@ class StartNewMatchController: UIViewController {
             let firebaseMatch = DataService.ds.REF_MATCHES.childByAutoId()
             firebaseMatch.setValue(match)
             newMatch = firebaseMatch.key
+            //print("Match: \(match)")
+            //print("Key: \(firebaseMatch.key)")
             
             self.performSegueWithIdentifier(SEGUE_SCORING_TOOL, sender: nil)
             
@@ -86,7 +88,7 @@ class StartNewMatchController: UIViewController {
         if segue.identifier ==  SEGUE_SCORING_TOOL {
             if let destinationVC = segue.destinationViewController as? ScoringToolViewController {
                 destinationVC.matchKey = newMatch
-                //print("destinationVC data set to: \(newMatch)")
+                print("destinationVC data set to: \(newMatch)")
             }
             else {
                 print("wrong type VC")
