@@ -36,11 +36,11 @@ class ScoringToolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //my account
+        //my adUnitID
         bannerView.adUnitID = ADMOB_SCORING_TOOL_BANNER_ID
         
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID ]
+        request.testDevices = [ kGADSimulatorID, "5be7872d499a735a369c79d199b3f31d" ]
         
         bannerView.rootViewController = self
         bannerView.loadRequest(request)

@@ -30,21 +30,13 @@ class ScoreboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //my admob app id
-        //ca-app-pub-1123048845597310/8740185180
+        //print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
         
-//        my admob adunit id
-//        ca-app-pub-1123048845597310/
-        
-        print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
-        //test account
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        
-        //my account
+        //my adUnitID
         bannerView.adUnitID = ADMOB_SCOREBOARD_BANNER_ID
         
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID ]
+        request.testDevices = [ kGADSimulatorID, "5be7872d499a735a369c79d199b3f31d" ]
         
         bannerView.rootViewController = self
         bannerView.loadRequest(request)
