@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ScoringToolViewController: UIViewController {
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     
     var matchKey: String!
     
@@ -32,6 +35,15 @@ class ScoringToolViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //my account
+        bannerView.adUnitID = ADMOB_SCORING_TOOL_BANNER_ID
+        
+        let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID ]
+        
+        bannerView.rootViewController = self
+        bannerView.loadRequest(request)
         
         awayServingImg.hidden = true
 

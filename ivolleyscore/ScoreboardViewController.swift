@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 
+
 class ScoreboardViewController: UIViewController {
     
+    @IBOutlet weak var bannerView: GADBannerView!
 
     @IBOutlet weak var homeTeamNameLabel: UILabel!
     @IBOutlet weak var awayTeamNameLabel: UILabel!
@@ -27,6 +29,25 @@ class ScoreboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //my admob app id
+        //ca-app-pub-1123048845597310/8740185180
+        
+//        my admob adunit id
+//        ca-app-pub-1123048845597310/
+        
+        print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
+        //test account
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        
+        //my account
+        bannerView.adUnitID = ADMOB_SCOREBOARD_BANNER_ID
+        
+        let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID ]
+        
+        bannerView.rootViewController = self
+        bannerView.loadRequest(request)
 
         // Do any additional setup after loading the view.
         
